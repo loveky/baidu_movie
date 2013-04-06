@@ -1,0 +1,16 @@
+<div id="main">
+    <div id="movie_list" class="span9 pull-left">
+        <% @movies.each do |movie| %>
+            <div class="span2 movie_box">
+                <p><%= movie.name %></p>
+                <p><%= movie.year %>年</p>
+                <p><%= movie.category %></p>
+            </div>
+        <% end %>
+    </div>
+    <div id="side_bar" class="span3 pull-right">
+        Live sessions are conducted with join.me. Make sure to watch the video to see how to use it to participate in the live sessions. Live sessions are every Wednesday and Saturday at 9-10pm US Eastern time.
+    </div>
+
+    <%= will_paginate @movies %>
+</div>

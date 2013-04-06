@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+
+@import 'bootstrap';
+@import "bootstrap-responsive";
+
+body {
+    background-image: url(/assets/bg.png);
+}
