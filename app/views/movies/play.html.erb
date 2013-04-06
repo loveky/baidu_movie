@@ -1,0 +1,12 @@
+<script language="javascript">
+var BdPlayer = new Array();
+
+BdPlayer['width'] = 800;//播放器宽度(只能为数字)
+BdPlayer['height'] = 550;//播放器高度(只能为数字)
+BdPlayer['showclient'] = 1;//是否显示拉起拖盘按钮(1为显示 0为隐藏)
+BdPlayer['url'] = '<%= @url %>';//当前播放任务播放地址
+BdPlayer['nextcacheurl'] = '';//下一集播放地址(没有请留空)
+BdPlayer['lastwebpage'] = '';//上一集网页地址(没有请留空)
+BdPlayer['nextwebpage'] = '';//下一集网页地址(没有请留空)
+</script>
+<script language="javascript" src="http://php.player.baidu.com/bdplayer/player.js" charset="utf-8"></script>

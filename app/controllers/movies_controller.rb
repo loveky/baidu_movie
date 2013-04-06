@@ -80,4 +80,9 @@ class MoviesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def play
+    @movie = Movie.find(params[:id])
+    @url   = @movie.bdhds.find_by_text(params[:text]).url
+  end
 end

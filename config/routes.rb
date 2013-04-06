@@ -1,6 +1,7 @@
 BaiduMovie::Application.routes.draw do
   resources :movies
-
+  match 'movies/:id/play/:text' => 'movies#play', :as => :play
+  root :to => 'movies#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
