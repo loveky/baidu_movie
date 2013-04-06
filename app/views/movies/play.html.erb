@@ -1,12 +1,46 @@
 <script language="javascript">
-var BdPlayer = new Array();
+    var BdPlayer = new Array();
 
-BdPlayer['width'] = 800;//播放器宽度(只能为数字)
-BdPlayer['height'] = 550;//播放器高度(只能为数字)
-BdPlayer['showclient'] = 1;//是否显示拉起拖盘按钮(1为显示 0为隐藏)
-BdPlayer['url'] = '<%= @url %>';//当前播放任务播放地址
-BdPlayer['nextcacheurl'] = '';//下一集播放地址(没有请留空)
-BdPlayer['lastwebpage'] = '';//上一集网页地址(没有请留空)
-BdPlayer['nextwebpage'] = '';//下一集网页地址(没有请留空)
+    BdPlayer['width'] = 800;//播放器宽度(只能为数字)
+    BdPlayer['height'] = 550;//播放器高度(只能为数字)
+    BdPlayer['showclient'] = 1;//是否显示拉起拖盘按钮(1为显示 0为隐藏)
+    BdPlayer['url'] = '<%= @url %>';//当前播放任务播放地址
+    BdPlayer['nextcacheurl'] = '';//下一集播放地址(没有请留空)
+    BdPlayer['lastwebpage'] = '';//上一集网页地址(没有请留空)
+    BdPlayer['nextwebpage'] = '';//下一集网页地址(没有请留空)
 </script>
 <script language="javascript" src="http://php.player.baidu.com/bdplayer/player.js" charset="utf-8"></script>
+
+
+
+<script>
+    function remove_iframe() {
+        // if (document.getElementById("BdPlayer") != null) {
+        //     console.log("Exit remove_iframe()")
+        //     return true;
+        // }
+
+        // if (document.getElementByTagName("iframe") != null) {
+
+        // }
+
+        if ($("#BdPlayer").size() > 0) {
+            console.log("Exit remove_iframe()");
+            return true;
+        }
+
+        if ($("iframe").size() > 0 ) {
+            $notify = $('<div calss="notify"></div');
+            $notify.append('<h3>你尚未安装百度影音，本站所有视频均基于百度影音协议。</h3>');
+            $notify.append('<h4><a href="http://player.baidu.com/">点此下载最新版百度影音</a></h4>');
+            $("iframe").replaceWith($notify);
+            console.log("Exit remove_iframe()");
+            return true;
+        }
+
+        var repeat = "remove_iframe()";
+        setTimeout(repeat, 10);
+    }
+
+    remove_iframe();
+</script>
