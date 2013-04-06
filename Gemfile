@@ -6,7 +6,6 @@ gem 'rails'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'mysql'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,11 +19,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
 gem 'bootstrap-sass'
 
 gem 'will_paginate'
 
+group :devlopment do
+    gem 'jquery-rails'
+end
+
+group :production do
+    gem 'mysql2'
+    gem 'cloudfoundry-jquery-rails'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
