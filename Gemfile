@@ -23,13 +23,11 @@ gem 'bootstrap-sass'
 
 gem 'will_paginate'
 
-group :devlopment do
-    gem 'jquery-rails'
-end
+
+gem 'cloudfoundry-jquery-rails'
 
 group :production do
     gem 'mysql2'
-    gem 'cloudfoundry-jquery-rails'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
