@@ -30,7 +30,7 @@
 <script>
     function remove_iframe() {
         if ($("iframe").size() > 0 ) {
-            $notify = $('<div calss="notify"></div');
+            $notify = $('<div class="notify_install_bdhd"></div');
             $notify.append('<h3>你尚未安装百度影音，本站所有视频均基于百度影音协议。</h3>');
             $notify.append('<h4><a href="http://player.baidu.com/">点此下载最新版百度影音</a></h4>');
             $("iframe").replaceWith($notify);
@@ -48,5 +48,5 @@
         var repeat = "remove_iframe()";
         setTimeout(repeat, 10);
     }
-    //remove_iframe();
+    remove_iframe();
 </script>

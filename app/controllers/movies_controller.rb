@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.paginate(:page => params[:page] ? params[:page] : 1)
+    @movies = Movie.paginate(:page => params[:page] ? params[:page] : 1).order("updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
