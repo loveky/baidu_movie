@@ -83,6 +83,7 @@ class MoviesController < ApplicationController
 
   def play
     @movie = Movie.find(params[:id])
-    @url   = @movie.bdhds.find_by_text(params[:text]).url
+    @bdhd   = @movie.bdhds.find_by_text(params[:text])
+    @other_bdhds = @movie.bdhds.delete_if {|b| b.text == params[:text]}
   end
 end

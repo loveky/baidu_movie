@@ -4,26 +4,31 @@
     BdPlayer['width'] = 800;//播放器宽度(只能为数字)
     BdPlayer['height'] = 550;//播放器高度(只能为数字)
     BdPlayer['showclient'] = 1;//是否显示拉起拖盘按钮(1为显示 0为隐藏)
-    BdPlayer['url'] = '<%= @url %>';//当前播放任务播放地址
+    BdPlayer['url'] = '<%= @bdhd.url %>';//当前播放任务播放地址
     BdPlayer['nextcacheurl'] = '';//下一集播放地址(没有请留空)
     BdPlayer['lastwebpage'] = '';//上一集网页地址(没有请留空)
     BdPlayer['nextwebpage'] = '';//下一集网页地址(没有请留空)
 </script>
 <script language="javascript" src="http://php.player.baidu.com/bdplayer/player.js" charset="utf-8"></script>
 
+<div id="movie_info">
+    <h4>正在播出: <span><%= @movie.name %></span></h4>
+    <h4>上映时间: <span><%= @movie.year %>年</span></h4>
+    <h4>影片类型: <span><%= @movie.category %></span></h4>
+    <% if @other_bdhds.size > 0 %>
+        <h4>其他片源: </h4>
+        <ul>
+            <% @other_bdhds.each do |bdhd| %>
+                <li><%= link_to bdhd.text, play_url(:id => @movie.id, :text => bdhd.text) %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+</div>
 
 
 <script>
     function remove_iframe() {
-        // if (document.getElementById("BdPlayer") != null) {
-        //     console.log("Exit remove_iframe()")
-        //     return true;
-        // }
-
-        // if (document.getElementByTagName("iframe") != null) {
-
-        // }
-
         if ($("iframe").size() > 0 ) {
             $notify = $('<div calss="notify"></div');
             $notify.append('<h3>你尚未安装百度影音，本站所有视频均基于百度影音协议。</h3>');
@@ -43,6 +48,5 @@
         var repeat = "remove_iframe()";
         setTimeout(repeat, 10);
     }
-
-    remove_iframe();
+    //remove_iframe();
 </script>

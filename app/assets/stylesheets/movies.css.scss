@@ -43,3 +43,23 @@
 #movie_list {
     margin-left: 0px;
 }
+
+#movie_info {
+    display: inline-block;
+    width: 220px;
+    position: relative;
+    left: 30px;
+}
+
+#movie_info h4 span {
+    color: #0088cc;
+}
+
+#movie_info ul {
+    list-style: none;
+}
+
+iframe, div[id^="Bd"] {
+    float: left;
+    display: inline-block;
+}
