@@ -24,11 +24,6 @@
 
         // }
 
-        if ($("#BdPlayer").size() > 0) {
-            console.log("Exit remove_iframe()");
-            return true;
-        }
-
         if ($("iframe").size() > 0 ) {
             $notify = $('<div calss="notify"></div');
             $notify.append('<h3>你尚未安装百度影音，本站所有视频均基于百度影音协议。</h3>');
@@ -37,6 +32,13 @@
             console.log("Exit remove_iframe()");
             return true;
         }
+
+        if ($("#BdPlayer").size() > 0) {
+            console.log("Exit remove_iframe()");
+            return true;
+        }
+
+
 
         var repeat = "remove_iframe()";
         setTimeout(repeat, 10);
