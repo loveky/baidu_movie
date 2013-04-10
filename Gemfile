@@ -21,7 +21,8 @@ end
 
 gem 'bootstrap-sass'
 
-gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+#gem 'will_paginate'
 
 
 gem 'cloudfoundry-jquery-rails'
