@@ -1,4 +1,7 @@
 class MoviesController < ApplicationController
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+ 
   # GET /movies
   # GET /movies.json
   def index
@@ -82,8 +85,17 @@ class MoviesController < ApplicationController
   end
 
   def play
+    
     @movie = Movie.find(params[:id])
-    @bdhd   = @movie.bdhds.find_by_text(params[:text])
+    @bdhd = @movie.bdhds.find_by_text(params[:text])
+    record_not_found unless @bdhd
+
     @other_bdhds = @movie.bdhds.delete_if {|b| b.text == params[:text]}
+  end
+
+  private
+ 
+  def record_not_found
+    render :file => "#{Rails.root}/public/404.html", :status => :not_found
   end
 end
