@@ -76,7 +76,7 @@
     clear: both;
 }
 
-#side_bar {
+#sidebar {
     margin-top: 20px;
     margin-right: 30px;
     margin-left: 0px;
@@ -111,4 +111,10 @@ iframe, div[id^="Bd"] {
     float: left;
     width: 800px;
     height: 550px;
+}
+
+.sidebar_box {
+  padding: 8px;
+  border-radius: 10px;
+  background-color: rgb(245, 245, 245);
 }
