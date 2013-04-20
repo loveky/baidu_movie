@@ -11,8 +11,18 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="/">loveky的电影院</a>
-                    <ul class="nav">
-                        <li><%= link_to "Register", register_path %></li>
+                    <% if logged_in? %>
+                        <ul class="nav">
+                            <li>Hello <a id="username"><%= current_user.username %></a> !</li>
+                        </ul>
+                    <% end %>
+                    <ul class="nav pull-right">
+                        <% if logged_in? %>
+                            <li><%= link_to "Logout", logout_path %></li>
+                        <% else %>
+                            <li><%= link_to "Register", register_path %></li>
+                            <li><%= link_to "Login", login_path %></li>
+                        <% end %>
                     </ul>
                 </div>
             </div>
