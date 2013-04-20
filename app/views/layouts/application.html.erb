@@ -8,17 +8,19 @@
         </head>
     <body style="padding-top: 60px">
         <div class="navbar navbar-inverse navbar-fixed-top">
-          <div class="navbar-inner">
-            <div class="container">
-              <a class="brand" href="/">loveky的电影院</a>
-
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="/">loveky的电影院</a>
+                    <ul class="nav">
+                        <li><%= link_to "Register", register_path %></li>
+                    </ul>
+                </div>
             </div>
-          </div>
         </div>
 
         <div class="container">
-                <%= render 'layouts/messages' %>
-                <%= yield %>
+            <%= render 'layouts/messages' %>
+            <%= yield %>
         </div> 
     </body>
 </html>

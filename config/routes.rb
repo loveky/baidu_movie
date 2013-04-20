@@ -3,6 +3,10 @@ BaiduMovie::Application.routes.draw do
   match 'movies/:id/play/:text' => 'movies#play', :as => :play
   root :to => 'movies#index'
 
+  get '/register', to: 'users#new'
+  post '/register', to: 'users#create'
+  resources :users, only: ["new", "create"]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
