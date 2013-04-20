@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405090109) do
+ActiveRecord::Schema.define(:version => 20130420100251) do
 
   create_table "bdhds", :force => true do |t|
     t.string   "url"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(:version => 20130405090109) do
     t.integer  "movie_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string "username"
+    t.string "password_digest"
   end
 
 end
