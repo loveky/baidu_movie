@@ -10,11 +10,11 @@
 <% end %>
 
 <%= form_for @user, html: {class: 'centerform'} do |f| %>
-    <%= f.label :username %>
+    <%= f.label "用户名" %>
     <%= f.text_field :username %>
     <br/>
-    <%= f.label :password %>
+    <%= f.label "密码" %>
     <%= f.password_field :password %>
     <br/>
-    <%= f.submit "Register", class: "btn btn-primary" %>
+    <%= f.submit "注册", class: "btn btn-primary" %>
 <% end %>

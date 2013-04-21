@@ -18,10 +18,10 @@
                     <% end %>
                     <ul class="nav pull-right">
                         <% if logged_in? %>
-                            <li><%= link_to "Logout", logout_path %></li>
+                            <li><%= link_to "退出", logout_path %></li>
                         <% else %>
-                            <li><%= link_to "Register", register_path %></li>
-                            <li><%= link_to "Login", login_path %></li>
+                            <li><%= link_to "注册新用户", register_path %></li>
+                            <li><%= link_to "登录", login_path %></li>
                         <% end %>
                     </ul>
                 </div>
