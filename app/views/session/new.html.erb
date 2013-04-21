@@ -1,9 +1,7 @@
 <%= form_tag login_path, class: "centerform" do %>
     <%= label_tag "用户名" %>
     <%= text_field_tag :username %>
-    <br/>
     <%= label_tag "密码" %>
     <%= password_field_tag :password %>
-    <br/>
     <%= submit_tag "登录", class: "btn btn-success" %>
 <% end %>

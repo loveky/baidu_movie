@@ -12,9 +12,7 @@
 <%= form_for @user, html: {class: 'centerform'} do |f| %>
     <%= f.label "用户名" %>
     <%= f.text_field :username %>
-    <br/>
     <%= f.label "密码" %>
     <%= f.password_field :password %>
-    <br/>
     <%= f.submit "注册", class: "btn btn-primary" %>
 <% end %>
