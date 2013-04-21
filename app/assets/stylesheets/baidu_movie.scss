@@ -19,3 +19,11 @@ a#username {
 ul.nav li {
     color: #999;
 }
+
+form.centerform {
+    width: 220px;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -110px;
+}
