@@ -1,3 +1,14 @@
+<% if @user.errors.any? %>
+    <% @user.errors.each do |k, v| %>
+        <% next if k == :password_digest %>
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>    
+            <strong><%= k %></strong>&nbsp<%= v %>
+        </div>
+
+    <% end %>
+<% end %>
+
 <%= form_for @user, html: {class: 'centerform'} do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %>
