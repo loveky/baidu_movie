@@ -9,12 +9,27 @@
     <% end %>
 <% end %>
 
-<%= form_for @user, html: {class: 'centerform'} do |f| %>
-    <%= f.label "用户名" %>
-    <%= f.text_field :username %>
-    <%= f.label "密码" %>
-    <%= f.password_field :password %>
-    <%= f.label "确认密码" %>
-    <%= f.password_field :password_confirmation %>
-    <%= f.submit "注册", class: "btn btn-primary" %>
+<%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
+    <div class="control-group">
+        <%= f.label "用户名", class: "control-label" %>
+        <div class="controls">
+            <%= f.text_field :username %>
+        </div>
+    </div>
+    <div class="control-group">
+        <%= f.label "密码", class: "control-label" %>
+        <div class="controls">
+            <%= f.password_field :password %>
+        </div>
+    <div class="control-group">
+        <%= f.label "确认密码", class: "control-label" %>
+        <div class="controls">
+            <%= f.password_field :password_confirmation %>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <%= f.submit "注册", class: "btn btn-primary" %>
+        </div>
+    </div>            
 <% end %>
