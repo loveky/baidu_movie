@@ -4,7 +4,14 @@ $(document).ready(function () {
 
     // redirect to search result page when click search button
     $("button#search").click(function() {
-        window.location = window.location.origin + "/search/" + $("#search").siblings("input").val()
+        if ($(this).siblings("input").val() != "") {
+            window.location = window.location.origin + "/search/" + $(this).siblings("input").val();
+        }
+    }).siblings("input").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if (code == 13) { //Enter keycode
+            $(this).siblings("#search").click();
+        }
     });
 });
 
