@@ -11,6 +11,8 @@ BaiduMovie::Application.routes.draw do
   post '/login',  to: 'session#create'
   get  '/logout', to: 'session#destroy'
 
+  get '/search/:key', to: 'movies#search'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

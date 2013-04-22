@@ -93,6 +93,10 @@ class MoviesController < ApplicationController
     @other_bdhds = @movie.bdhds.delete_if {|b| b.text == params[:text]}
   end
 
+  def search
+    @movies = Movie.where("name like ?", "%" + params[:key].to_s + "%");
+  end
+
   private
  
   def record_not_found
