@@ -11,19 +11,19 @@
 
 <%= form_for @user, html: {class: 'form-horizontal'} do |f| %>
     <div class="control-group">
-        <%= f.label "用户名", class: "control-label" %>
+        <%= f.label :username, "用户名", class: "control-label" %>
         <div class="controls">
             <%= f.text_field :username %>
         </div>
     </div>
     <div class="control-group">
-        <%= f.label "密码", class: "control-label" %>
+        <%= f.label :password, "密码", class: "control-label" %>
         <div class="controls">
             <%= f.password_field :password %>
         </div>
     </div>
     <div class="control-group">
-        <%= f.label "确认密码", class: "control-label" %>
+        <%= f.label :password_confirmation, "确认密码", class: "control-label" %>
         <div class="controls">
             <%= f.password_field :password_confirmation %>
         </div>
