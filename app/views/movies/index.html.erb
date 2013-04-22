@@ -1,27 +1,17 @@
-<div id="main">
-    <div id="movie_list" class="span9 pull-left">
-        <div >
-            <% @movies.each do |movie| %>
-                <div class="span2 movie_box">
-                    <p><%= movie.name %></p>
-                    <p><%= movie.year %>年</p>
-                    <p><%= movie.category %></p>
-                    <ul>
-                        <% movie.bdhds.each do |bdhd| %>
-                            <li><%= link_to bdhd.text, play_url(:id => movie.id, :text => bdhd.text) %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            <% end %>
-        </div>
-        <%= will_paginate @movies, previous_label: "上一页", next_label: "下一页" %>
+<div id="movie_list">
+    <div >
+        <% @movies.each do |movie| %>
+            <div class="span2 movie_box">
+                <p><%= movie.name %></p>
+                <p><%= movie.year %>年</p>
+                <p><%= movie.category %></p>
+                <ul>
+                    <% movie.bdhds.each do |bdhd| %>
+                        <li><%= link_to bdhd.text, play_url(:id => movie.id, :text => bdhd.text) %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
     </div>
-    <div id="sidebar" class="span3 pull-right">
-        <div class="sidebar_box">
-            本站光荣的采用<a href="http://rubyonrails.org/">Rails</a> + <a href="twitter.github.com/bootstrap/">Bootstrap</a> + <a href="http://jquery.org/">jQuery</a>搭建，感谢<a href="http://www.cloudfoundry.com">CloudFoundry</a>提供免费部署平台。所有数据均来自互联网。网站程序已开源在<a href="https://github.com/loveky/baidu_movie">Github</a>。
-            <br>
-            <br>
-            使用本站过程中如有任何问题，请猛击<a href="https://github.com/loveky/baidu_movie/issues/new">这里</a>提交issue。
-        </div>
-    </div> 
+    <%= will_paginate @movies, previous_label: "上一页", next_label: "下一页" %>
 </div>
