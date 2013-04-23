@@ -85,12 +85,13 @@ class MoviesController < ApplicationController
   end
 
   def play
-    
     @movie = Movie.find(params[:id])
     @bdhd = @movie.bdhds.find_by_text(params[:text])
     record_not_found unless @bdhd
 
     @other_bdhds = @movie.bdhds.delete_if {|b| b.text == params[:text]}
+
+    render layout: "application_without_sidebar"
   end
 
   def search
