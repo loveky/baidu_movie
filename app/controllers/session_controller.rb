@@ -1,4 +1,6 @@
 class SessionController < ApplicationController
+    layout "application_without_sidebar"
+
     def new
 
     end
