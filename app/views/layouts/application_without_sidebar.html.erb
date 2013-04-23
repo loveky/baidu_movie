@@ -7,30 +7,11 @@
         <%= csrf_meta_tags %>
         </head>
     <body style="padding-top: 60px">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="/">loveky的电影院</a>
-                    <% if logged_in? %>
-                        <ul class="nav">
-                            <li>Hello <a id="username"><%= current_user.username %></a> !</li>
-                        </ul>
-                    <% end %>
-                    <ul class="nav pull-right">
-                        <% if logged_in? %>
-                            <li><%= link_to "退出", logout_path %></li>
-                        <% else %>
-                            <li><%= link_to "注册新用户", register_path %></li>
-                            <li><%= link_to "登录", login_path %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <%= render "layouts/header" %>
 
         <div class="container">
-            <%= render 'layouts/messages' %>
-                <%= yield %>
+            <%= render "layouts/messages" %>
+            <%= yield %>
         </div> 
     </body>
 </html>

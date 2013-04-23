@@ -7,46 +7,14 @@
         <%= csrf_meta_tags %>
         </head>
     <body style="padding-top: 60px">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="/">loveky的电影院</a>
-                    <% if logged_in? %>
-                        <ul class="nav">
-                            <li>Hello <a id="username"><%= current_user.username %></a> !</li>
-                        </ul>
-                    <% end %>
-                    <ul class="nav pull-right">
-                        <% if logged_in? %>
-                            <li><%= link_to "退出", logout_path %></li>
-                        <% else %>
-                            <li><%= link_to "注册新用户", register_path %></li>
-                            <li><%= link_to "登录", login_path %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <%= render "layouts/header" %>
 
         <div class="container">
-            <%= render 'layouts/messages' %>
+            <%= render "layouts/messages" %>
             <div id="main" class="span9 pull-left">
                 <%= yield %>
             </div>
-            <div id="sidebar" class="span3 pull-right">
-                <div class="sidebar_box">
-                    <div class="input-append">
-                        <input class="span2" id="appendedInputButton" type="text">
-                        <button id="search" class="btn" type="button">搜搜看</button>
-                    </div>
-                </div>
-                <div class="sidebar_box">
-                    本站光荣的采用<a href="http://rubyonrails.org/">Rails</a> + <a href="twitter.github.com/bootstrap/">Bootstrap</a> + <a href="http://jquery.org/">jQuery</a>搭建，感谢<a href="http://www.cloudfoundry.com">CloudFoundry</a>提供免费部署平台。所有数据均来自互联网。网站程序已开源在<a href="https://github.com/loveky/baidu_movie">Github</a>。
-                    <br>
-                    <br>
-                    使用本站过程中如有任何问题，请猛击<a href="https://github.com/loveky/baidu_movie/issues/new">这里</a>提交issue。
-                </div>
-            </div> 
+            <%= render "layouts/sidebar" %>
         </div> 
     </body>
 </html>
