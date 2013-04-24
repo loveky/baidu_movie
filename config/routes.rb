@@ -13,7 +13,7 @@ BaiduMovie::Application.routes.draw do
 
   get '/search/:key', to: 'movies#search'
 
-  get '/category/:category_name', to: "category#show"
+  get '/category/:category_name', to: "category#show", as: :category
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
