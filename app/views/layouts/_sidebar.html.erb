@@ -15,6 +15,13 @@
         使用本站过程中如有任何问题，请猛击<a href="https://github.com/loveky/baidu_movie/issues/new">这里</a>提交issue。
     </div>
     <div class="sidebar_box">
-        分类
+        <div class="sidebar_box_header"> 
+            影片分类
+        </div>
+        <div>
+            <% Movie.pluck(:category).uniq.each do |category| %>
+                <%= link_to category, category_path(category_name: category) %>
+            <% end %>
+        </div>
     </div>
 </div> 
