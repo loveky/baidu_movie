@@ -8,6 +8,9 @@
                 </ul>
             <% end %>
             <ul class="nav pull-right">
+                <li class="weiboshare">
+                    <wb:share-button appkey="1507285046" relateuid="2092800185" ></wb:share-button>
+                </li>
                 <% if logged_in? %>
                     <li><%= link_to "退出", logout_path %></li>
                 <% else %>
