@@ -1,0 +1,23 @@
+<% if @movies.nil? %>
+    <div class="alert alert-info">
+        未找到该类电影！
+    </div>
+<% else %>
+    <div id="movie_list">
+        <div >
+            <% @movies.each do |movie| %>
+                <div class="span2 movie_box">
+                    <p><%= movie.name %></p>
+                    <p><%= movie.year %>年</p>
+                    <p><%= movie.category %></p>
+                    <ul>
+                        <% movie.bdhds.each do |bdhd| %>
+                            <li><%= link_to bdhd.text, play_url(:id => movie.id, :text => bdhd.text) %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+        </div>
+        <%= will_paginate @movies, previous_label: "上一页", next_label: "下一页" %>
+    </div>
+<% end %>
