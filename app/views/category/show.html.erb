@@ -3,6 +3,11 @@
         未找到该类电影！
     </div>
 <% else %>
+    <% if params[:page].nil? %>
+        <div class="alert alert-info">
+            共为你找到<%= @category_total_count %>部<%= params[:category_name] %>
+        </div>
+    <% end %>
     <div id="movie_list">
         <div >
             <% @movies.each do |movie| %>
