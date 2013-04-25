@@ -11,19 +11,23 @@
 </script>
 <script language="javascript" src="http://php.player.baidu.com/bdplayer/player.js" charset="utf-8"></script>
 
-<div id="movie_info">
-    <h4>正在播出: <span><%= @movie.name %></span></h4>
-    <h4>上映时间: <span><%= @movie.year %>年</span></h4>
-    <h4>影片类型: <span><%= @movie.category %></span></h4>
-    <% if @other_bdhds.size > 0 %>
-        <h4>其他片源: </h4>
-        <ul>
-            <% @other_bdhds.each do |bdhd| %>
-                <li><%= link_to bdhd.text, play_url(:id => @movie.id, :text => bdhd.text) %></li>
-            <% end %>
-        </ul>
-    <% end %>
-
+<div id="sidebar" class="span3 pull-right">
+    <div class="sidebar_box">
+        <div class="sidebar_box_header">
+            影片信息
+        </div>
+        <p>片名: <span><%= @movie.name %></span></p>
+        <p>上映时间: <span><%= @movie.year %>年</span></p>
+        <p>影片类型: <span><%= @movie.category %></span></p>
+        <% if @other_bdhds.size > 0 %>
+            <p>其他片源: </p>
+            <ul>
+                <% @other_bdhds.each do |bdhd| %>
+                    <li><%= link_to bdhd.text, play_url(:id => @movie.id, :text => bdhd.text) %></li>
+                <% end %>
+            </ul>
+        <% end %>
+    </div>
 </div>
 
 
