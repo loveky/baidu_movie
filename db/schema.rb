@@ -22,9 +22,11 @@ ActiveRecord::Schema.define(:version => 20130425131924) do
   end
 
   create_table "comments", :force => true do |t|
-    t.string  "content"
-    t.integer "user_id"
-    t.integer "movie_id"
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "movies", :force => true do |t|

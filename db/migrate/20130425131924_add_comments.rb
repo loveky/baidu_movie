@@ -5,7 +5,7 @@ class AddComments < ActiveRecord::Migration
         t.integer :user_id
         t.integer :movie_id
 
-        t.timestamp
+        t.timestamps
     end
   end
 

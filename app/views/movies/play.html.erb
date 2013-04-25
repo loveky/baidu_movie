@@ -38,6 +38,18 @@
             <%= f.text_area :content, rows: 2, placeholder: @movie.comments.empty? ? "快来抢沙发吧！" : "一起来聊聊吧..." %>
             <%= f.submit "发布", class: "btn btn-primary" %>
         <% end %>
+        <div id="comment_list">
+            <% @movie.comments.order("created_at DESC").each do |comment| %>
+                <div class="comment_entry">
+                    <div class="comment_content">
+                        <%= comment.content %>
+                    </div>
+                    <div class="comment_info">
+                        -- <%= comment.user.username %>评论于<%= time_ago_in_words(comment.created_at) %>前
+                    </div>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>
 
