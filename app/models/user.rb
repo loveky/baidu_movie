@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
     validates :password, :confirmation => {:message => "两次密码输入不一致"}, :unless => Proc.new { |a| a.password.blank? || a.password_confirmation.blank? }
     validates :username, :uniqueness => {:case_sensitive => false, :message => "已被使用，再选个名字吧"}
 
+    has_many :comments
     has_secure_password
 end
