@@ -19,10 +19,9 @@ $(document).ready(function () {
         //alert($(this).siblings("textarea").val()); $(this).parent().attr("action")
         $.post($(this).parent().attr("action"), {"comment" : {"content" : $(this).siblings("textarea").val()}},
             function(data) {
-                console.log(data);
+                $('<div class="comment_entry"><div class="comment_content">' + data["content"] + '</div> <div class="comment_info"> -- 你评论于less than a minute前 </div> </div>').prependTo("#comment_list");
             }, "json"
         );
         return false;
     });
 });
-
