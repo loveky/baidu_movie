@@ -33,10 +33,13 @@
         <div class="sidebar_box_header">
             边看边说
         </div>
-
-        <%= form_for [@movie, @comment] do |f| %>
-            <%= f.text_area :content, rows: 2, placeholder: @movie.comments.empty? ? "快来抢沙发吧！" : "一起来聊聊吧..." %>
-            <%= f.submit "发布", class: "btn btn-primary" %>
+        <% if logged_in? %>
+            <%= form_for [@movie, @comment] do |f| %>
+                <%= f.text_area :content, rows: 2, placeholder: @movie.comments.empty? ? "快来抢沙发吧！" : "一起来聊聊吧..." %>
+                <%= f.submit "发布", class: "btn btn-primary" %>
+            <% end %>
+        <% else %>
+            <p>赶快<%= link_to "登录", login_path, class: "btn btn-success btn-small" %>参与讨论吧！</p>
         <% end %>
         <div id="comment_list">
             <% @movie.comments.order("created_at DESC").each do |comment| %>
