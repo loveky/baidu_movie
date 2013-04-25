@@ -1,5 +1,8 @@
 BaiduMovie::Application.routes.draw do
-  resources :movies
+  resources :movies do
+    resources :comments, only: [:create]
+  end
+
   match 'movies/:id/play/:text' => 'movies#play', :as => :play
   root :to => 'movies#index'
 
