@@ -20,8 +20,10 @@ $(document).ready(function () {
         $.post($(this).parent().attr("action"), {"comment" : {"content" : $(this).siblings("textarea").val()}},
             function(data) {
                 $('<div class="comment_entry"><div class="comment_content">' + data["content"] + '</div> <div class="comment_info"> -- 你评论于less than a minute前 </div> </div>').prependTo("#comment_list");
+                $("form.new_comment input.btn").button("reset");
             }, "json"
         );
+        $(this).button("loading");
         return false;
     });
 });
