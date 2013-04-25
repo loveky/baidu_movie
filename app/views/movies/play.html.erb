@@ -28,6 +28,17 @@
             </ul>
         <% end %>
     </div>
+
+    <div class="sidebar_box">
+        <div class="sidebar_box_header">
+            边看边说
+        </div>
+
+        <%= form_for [@movie, @comment] do |f| %>
+            <%= f.text_area :content, rows: 2, placeholder: @movie.comments.empty? ? "快来抢沙发吧！" : "一起来聊聊吧..." %>
+            <%= f.submit "发布", class: "btn btn-primary" %>
+        <% end %>
+    </div>
 </div>
 
 

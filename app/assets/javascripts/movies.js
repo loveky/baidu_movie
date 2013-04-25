@@ -13,5 +13,16 @@ $(document).ready(function () {
             $(this).siblings("#search").click();
         }
     });
+
+    // add new comment
+    $("form.new_comment input.btn").click(function() {
+        //alert($(this).siblings("textarea").val()); $(this).parent().attr("action")
+        $.post($(this).parent().attr("action"), {"comment" : {"content" : $(this).siblings("textarea").val()}},
+            function(data) {
+                console.log(data);
+            }, "json"
+        );
+        return false;
+    });
 });
 

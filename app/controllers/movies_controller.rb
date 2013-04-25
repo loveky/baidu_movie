@@ -91,6 +91,8 @@ class MoviesController < ApplicationController
 
     @other_bdhds = @movie.bdhds.delete_if {|b| b.text == params[:text]}
 
+    @comment = Comment.new
+
     render layout: "application_without_sidebar"
   end
 
