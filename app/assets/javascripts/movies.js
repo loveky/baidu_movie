@@ -15,7 +15,7 @@ $(document).ready(function () {
     });
 
     // add new comment
-    $("form.new_comment input.btn").click(function() {
+    $(".sidebar_box").delegate("form.new_comment input.btn", "click", function() {
         //alert($(this).siblings("textarea").val()); $(this).parent().attr("action")
         $.post($(this).parent().attr("action"), {"comment" : {"content" : $(this).siblings("textarea").val()}},
             function(data) {
@@ -37,10 +37,15 @@ $(document).ready(function () {
     $("#login_form form button").click(function() {
         $.post($(this).parent().attr("action"), {"username" : $(this).siblings("input[type='text']").val(), "password" : $(this).siblings("input[type='password']").val()},
             function(data) {
-                console.log(data);
+                if (data["status"] == "success") {
+                    $("#login_form").toggle();
+                    $('<form accept-charset="UTF-8" action="/movies/' + document.URL.split("/")[4] + '/comments" class="new_comment" id="new_comment" method="post"> <textarea cols="40" id="comment_content" name="comment[content]" placeholder="一起来聊聊吧..." rows="2"></textarea> <input class="btn btn-primary" data-loading-text="发布中..." name="commit" type="submit" value="发布"> </form>').insertAfter("#login_form");
+                }
             }, "json"
         );
 
         return false;        
     });
 });
+
+
