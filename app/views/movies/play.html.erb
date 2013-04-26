@@ -39,7 +39,14 @@
                 <%= f.submit "发布", class: "btn btn-primary", "data-loading-text" => "发布中..." %>
             <% end %>
         <% else %>
-            <p>赶快<%= link_to "登录", login_path, class: "btn btn-success btn-small" %>参与讨论吧！</p>
+            <p>赶快<button id="login_button" class="btn btn-success btn-small">登录</button>参与讨论吧！</p>
+            <div id="login_form">
+                <form class="form-inline" action="<%= login_path %>">
+                    <input type="text" class="input-small" placeholder="Email">
+                    <input type="password" class="input-small" placeholder="Password">
+                    <button type="submit" class="btn">登录</button>
+                </form>
+            </div>
         <% end %>
         <div id="comment_list">
             <% @movie.comments.order("created_at DESC").each do |comment| %>
@@ -79,3 +86,4 @@
     }
     remove_iframe();
 </script>
+

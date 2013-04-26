@@ -26,4 +26,21 @@ $(document).ready(function () {
         $(this).button("loading");
         return false;
     });
+
+    // toggle login form on play page when click on login button
+    $("#login_button").click(function () {
+        $("#login_form").toggle("fast");
+        $(this).parent().toggle();
+    });
+
+    // login throught comment login form
+    $("#login_form form button").click(function() {
+        $.post($(this).parent().attr("action"), {"username" : $(this).siblings("input[type='text']").val(), "password" : $(this).siblings("input[type='password']").val()},
+            function(data) {
+                console.log(data);
+            }, "json"
+        );
+
+        return false;        
+    });
 });

@@ -11,8 +11,14 @@ class SessionController < ApplicationController
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
 
-            flash[:success] = "Welcome back!"
-            redirect_to root_path
+            respond_to do |format|
+                format.json {render json: {status: :success}}
+                format.html {
+                    flash[:success] = "Welcome back!"
+                    redirect_to root_path                   
+                }
+            end
+
         else
             flash[:error] = "There is something wrong with your username/password."
             redirect_to login_path
