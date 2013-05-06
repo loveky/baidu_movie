@@ -17,7 +17,7 @@
                     <p><%= movie.category %></p>
                     <ul>
                         <% movie.bdhds.each do |bdhd| %>
-                            <li><%= link_to bdhd.text, play_url(:id => movie.id, :text => bdhd.text) %></li>
+                            <li><%= link_to bdhd.text, play_movie_url(:id => movie.id, :text => bdhd.text) %></li>
                         <% end %>
                     </ul>
                 </div>
