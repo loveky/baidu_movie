@@ -1,5 +1,5 @@
 BaiduMovie::Application.routes.draw do
-  resources :movies do
+  resources :movies, only: [:index] do
     resources :comments, only: [:create]
   end
 
