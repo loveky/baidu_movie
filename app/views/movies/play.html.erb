@@ -23,7 +23,7 @@
             <p>其他片源: </p>
             <ul>
                 <% @other_bdhds.each do |bdhd| %>
-                    <li><%= link_to bdhd.text, play_url(:id => @movie.id, :text => bdhd.text) %></li>
+                    <li><%= link_to bdhd.text, play_movie_url(:id => @movie.id, :text => bdhd.text) %></li>
                 <% end %>
             </ul>
         <% end %>

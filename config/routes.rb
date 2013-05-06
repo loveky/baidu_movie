@@ -1,9 +1,12 @@
 BaiduMovie::Application.routes.draw do
   resources :movies, only: [:index] do
     resources :comments, only: [:create]
+    member do
+      match 'play/:text' => 'movies#play', :as => :play
+    end
   end
 
-  match 'movies/:id/play/:text' => 'movies#play', :as => :play
+  #match 'movies/:id/play/:text' => 'movies#play', :as => :play
   root :to => 'movies#index'
 
   get '/register', to: 'users#new'
