@@ -15,6 +15,10 @@ group :test, :development do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'shoulda-matchers'
+end
+
 gem 'bootstrap-sass'
 
 gem 'bootstrap-will_paginate'
