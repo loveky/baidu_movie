@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :play_histories
-  has_many :movies, through: :play_histories
+  has_many :bdhds, through: :play_histories
   has_secure_password
 end

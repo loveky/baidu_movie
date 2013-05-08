@@ -3,7 +3,7 @@ require "spec_helper"
 
 describe User do
     it { should have_many(:comments) }
-    it { should have_many(:movies).through(:play_histories) }
+    it { should have_many(:bdhds).through(:play_histories) }
 
     it { should validate_presence_of(:username).with_message(/不能为空/) }
     it { should validate_presence_of(:password).with_message(/不能为空/) }
