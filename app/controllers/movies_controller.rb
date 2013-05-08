@@ -28,7 +28,12 @@ class MoviesController < ApplicationController
   def play
     @movie = Movie.find(params[:id])
     @bdhd = @movie.bdhds.find_by_text(params[:text])
+
     record_not_found unless @bdhd
+    
+    if logged_in?
+      @bdhd.watched_by(current_user)
+    end
 
     @other_bdhds = @movie.bdhds.delete_if {|b| b.text == params[:text]}
 
