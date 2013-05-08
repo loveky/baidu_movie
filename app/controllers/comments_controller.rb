@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def create 
     @comment = Comment.new(params[:comment])
+    
     @comment.movie_id = params[:movie_id]
     @comment.user_id  = current_user.id
 
