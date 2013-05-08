@@ -1,89 +1,89 @@
 <script language="javascript">
-    var BdPlayer = new Array();
+  var BdPlayer = new Array();
 
-    BdPlayer['width'] = 800;//播放器宽度(只能为数字)
-    BdPlayer['height'] = 550;//播放器高度(只能为数字)
-    BdPlayer['showclient'] = 1;//是否显示拉起拖盘按钮(1为显示 0为隐藏)
-    BdPlayer['url'] = '<%= @bdhd.url %>';//当前播放任务播放地址
-    BdPlayer['nextcacheurl'] = '';//下一集播放地址(没有请留空)
-    BdPlayer['lastwebpage'] = '';//上一集网页地址(没有请留空)
-    BdPlayer['nextwebpage'] = '';//下一集网页地址(没有请留空)
+  BdPlayer['width'] = 800;//播放器宽度(只能为数字)
+  BdPlayer['height'] = 550;//播放器高度(只能为数字)
+  BdPlayer['showclient'] = 1;//是否显示拉起拖盘按钮(1为显示 0为隐藏)
+  BdPlayer['url'] = '<%= @bdhd.url %>';//当前播放任务播放地址
+  BdPlayer['nextcacheurl'] = '';//下一集播放地址(没有请留空)
+  BdPlayer['lastwebpage'] = '';//上一集网页地址(没有请留空)
+  BdPlayer['nextwebpage'] = '';//下一集网页地址(没有请留空)
 </script>
 <script language="javascript" src="http://php.player.baidu.com/bdplayer/player.js" charset="utf-8"></script>
 
 <div id="sidebar" class="span3 pull-right">
-    <div class="sidebar_box">
-        <div class="sidebar_box_header">
-            影片信息
-        </div>
-        <p>片名: <span><%= @movie.name %></span></p>
-        <p>上映时间: <span><%= @movie.year %>年</span></p>
-        <p>影片类型: <span><%= @movie.category %></span></p>
-        <% if @other_bdhds.size > 0 %>
-            <p>其他片源: </p>
-            <ul>
-                <% @other_bdhds.each do |bdhd| %>
-                    <li><%= link_to bdhd.text, play_movie_url(:id => @movie.id, :text => bdhd.text) %></li>
-                <% end %>
-            </ul>
-        <% end %>
+  <div class="sidebar_box">
+    <div class="sidebar_box_header">
+      影片信息
     </div>
+    <p>片名: <span><%= @movie.name %></span></p>
+    <p>上映时间: <span><%= @movie.year %>年</span></p>
+    <p>影片类型: <span><%= @movie.category %></span></p>
+    <% if @other_bdhds.size > 0 %>
+      <p>其他片源: </p>
+      <ul>
+        <% @other_bdhds.each do |bdhd| %>
+          <li><%= link_to bdhd.text, play_movie_url(:id => @movie.id, :text => bdhd.text) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 
-    <div class="sidebar_box">
-        <div class="sidebar_box_header">
-            边看边说
-        </div>
-        <% if logged_in? %>
-            <%= form_for [@movie, @comment] do |f| %>
-                <%= f.text_area :content, rows: 2, placeholder: @movie.comments.empty? ? "快来抢沙发吧！" : "一起来聊聊吧..." %>
-                <%= f.submit "发布", class: "btn btn-primary", "data-loading-text" => "发布中..." %>
-            <% end %>
-        <% else %>
-            <p>赶快<button id="login_button" class="btn btn-success btn-small">登录</button>参与讨论吧！</p>
-            <div id="login_form">
-                <form class="form-inline" action="<%= login_path %>">
-                    <input type="text" class="input-small" placeholder="Email">
-                    <input type="password" class="input-small" placeholder="Password">
-                    <button type="submit" class="btn">登录</button>
-                </form>
-            </div>
-        <% end %>
-        <div id="comment_list">
-            <% @movie.comments.order("created_at DESC").each do |comment| %>
-                <div class="comment_entry">
-                    <div class="comment_content">
-                        <%= comment.content %>
-                    </div>
-                    <div class="comment_info">
-                        -- <%= comment.user.username %>评论于<%= time_ago_in_words(comment.created_at) %>前
-                    </div>
-                </div>
-            <% end %>
-        </div>
+  <div class="sidebar_box">
+    <div class="sidebar_box_header">
+      边看边说
     </div>
+    <% if logged_in? %>
+      <%= form_for [@movie, @comment] do |f| %>
+        <%= f.text_area :content, rows: 2, placeholder: @movie.comments.empty? ? "快来抢沙发吧！" : "一起来聊聊吧..." %>
+        <%= f.submit "发布", class: "btn btn-primary", "data-loading-text" => "发布中..." %>
+      <% end %>
+    <% else %>
+      <p>赶快<button id="login_button" class="btn btn-success btn-small">登录</button>参与讨论吧！</p>
+      <div id="login_form">
+        <form class="form-inline" action="<%= login_path %>">
+          <input type="text" class="input-small" placeholder="Email">
+          <input type="password" class="input-small" placeholder="Password">
+          <button type="submit" class="btn">登录</button>
+        </form>
+      </div>
+    <% end %>
+    <div id="comment_list">
+      <% @movie.comments.order("created_at DESC").each do |comment| %>
+        <div class="comment_entry">
+          <div class="comment_content">
+            <%= comment.content %>
+          </div>
+          <div class="comment_info">
+            -- <%= comment.user.username %>评论于<%= time_ago_in_words(comment.created_at) %>前
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
 <script>
-    function remove_iframe() {
+  function remove_iframe() {
 
-        if ($("#BdPlayer").size() > 0) {
-            console.log("Exit remove_iframe()");
-            return true;
-        }
-
-        if ($("iframe").size() > 0 ) {
-            $notify = $('<div class="notify_install_bdhd"></div');
-            $notify.append('<h3>你尚未安装百度影音，本站所有视频均基于百度影音协议。</h3>');
-            $notify.append('<h4><a href="http://player.baidu.com/">点此下载最新版百度影音</a></h4>');
-            $("iframe").replaceWith($notify);
-            console.log("Exit remove_iframe()");
-            return true;
-        }
-
-        var repeat = "remove_iframe()";
-        setTimeout(repeat, 10);
+    if ($("#BdPlayer").size() > 0) {
+      console.log("Exit remove_iframe()");
+      return true;
     }
-    remove_iframe();
+
+    if ($("iframe").size() > 0 ) {
+      $notify = $('<div class="notify_install_bdhd"></div');
+      $notify.append('<h3>你尚未安装百度影音，本站所有视频均基于百度影音协议。</h3>');
+      $notify.append('<h4><a href="http://player.baidu.com/">点此下载最新版百度影音</a></h4>');
+      $("iframe").replaceWith($notify);
+      console.log("Exit remove_iframe()");
+      return true;
+    }
+
+    var repeat = "remove_iframe()";
+    setTimeout(repeat, 10);
+  }
+  remove_iframe();
 </script>
 
