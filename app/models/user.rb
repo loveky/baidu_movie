@@ -7,5 +7,7 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => {:case_sensitive => false, :message => "已被使用，再选个名字吧"}
 
   has_many :comments
+  has_many :play_histories
+  has_many :movies, through: :play_histories
   has_secure_password
 end
