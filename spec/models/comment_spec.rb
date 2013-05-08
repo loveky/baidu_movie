@@ -1,6 +1,6 @@
 require "spec_helper"
 
 describe Comment do
-    it { should belong_to(:user)}
-    it { should belong_to(:movie)}
+    it { should belong_to(:user) }
+    it { should belong_to(:movie) }
 end
