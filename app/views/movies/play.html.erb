@@ -31,6 +31,15 @@
 
   <div class="sidebar_box">
     <div class="sidebar_box_header">
+      他们也看过
+    </div>
+    <% @bdhd.play_histories.each do |p|%>
+      <p><%= p.user.username %>在<%= time_ago_in_words(p.updated_at) %>前看过</p>
+    <% end %>
+  </div>
+
+  <div class="sidebar_box">
+    <div class="sidebar_box_header">
       边看边说
     </div>
     <% if logged_in? %>
